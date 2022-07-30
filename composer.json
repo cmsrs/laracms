@@ -1,0 +1,19 @@
+{
+    "name": "cmsrs/laracms",
+    "description": "cmsRS package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Cmsrs\\Laracms\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert",
+            "email": "robert.szczepanski@cmsrs.pl"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    }
+}
