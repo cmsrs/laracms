@@ -7,6 +7,27 @@
             "Cmsrs\\Laracms\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Cmsrs\\Laracms\\Tests\\": "tests/"
+        }
+    },
+
+    "extra": {
+       "laravel": {
+           "providers": [
+                  "Cmsrs\\Laracms\\Providers\\LaracmsProvider"
+            ]
+       }
+    },
+
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
+    },
+
+
     "authors": [
         {
             "name": "Robert",
@@ -14,6 +35,12 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7.0.1"
+        "guzzlehttp/guzzle": "^7.0.1",
+        "php-open-source-saver/jwt-auth": "^2.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.6",
+        "phpunit/phpunit": "^9.5",
+        "nunomaduro/collision": "^6.2"
     }
 }

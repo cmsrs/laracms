@@ -11,7 +11,7 @@
 
 <body>
     <div class="container">
-        <h1>{{ $quote }}</h1>
+        <h1>quote</h1>
     </div>
 </body>
 </html>
