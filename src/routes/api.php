@@ -19,8 +19,11 @@ Route::post('/api/login',  [AuthController::class, 'login'] )
 Route::post('/api/contact/{lang}', [ContactController::class, 'create']); 
 
 
-$apiSecret = '';
-Route::get( '/api/'.$apiSecret.'contacts', [ContactController::class, 'index']);    
+Route::group(['middleware' => ['jwt.auth']], function() {
+    $apiSecret = '';
+    Route::get( '/api/'.$apiSecret.'contacts', [ContactController::class, 'index']);  
+    Route::delete( '/api/'.$apiSecret.'contacts/{id}', [ContactController::class, 'delete']);  
+});
 
 
 /*
