@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 //use Illuminate\Support\ServiceProvider;
 //use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 //use CreatesApplication;
+use Illuminate\Support\Facades\DB;
 
 use Cmsrs\Laracms\Providers\LaracmsProvider;
 
@@ -88,12 +89,40 @@ class Base extends  \Orchestra\Testbench\TestCase
 
         $user->password = 'cmsrs';
 
-        User::where('email', 'test@email.com')->delete();
+        //User::where('email', 'test@email.com')->delete();
         $user->save();
 
 
         $this->token = $this->getTestToken();
     }
+
+    /*
+    public function deleteAllTables()
+    {
+        DB::table('contacts')->delete();
+        DB::table('comments')->delete();
+        DB::table('users')->delete();
+        DB::table('checkouts')->delete();
+        DB::table('pages')->delete();
+        DB::table('translates')->delete();
+        DB::table('menus')->delete();
+        DB::table('orders')->delete();
+        DB::table('password_resets')->delete();
+        DB::table('products')->delete();
+        DB::table('images')->delete();
+        DB::table('contents')->delete();
+        DB::table('baskets')->delete();
+        DB::table('migrations')->delete();
+
+    }
+    */
+
+    public function deleteUser()
+    {    
+        User::where('email', 'test@email.com')->delete();
+    }
+
+
 
     public function createClientUser()
     {
@@ -145,7 +174,7 @@ class Base extends  \Orchestra\Testbench\TestCase
         //$dir = __DIR__ . '/../../src/database/migrations';
         //dd($dir);
 
-        $this->loadMigrationsFrom(__DIR__ . '/../../src/database/migrations');  
+        //$this->loadMigrationsFrom(__DIR__ . '/../../src/database/migrations');  
         //$this->loadMigrationsFrom();  
         
         

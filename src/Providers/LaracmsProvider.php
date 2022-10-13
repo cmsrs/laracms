@@ -28,7 +28,7 @@ class LaracmsProvider extends ServiceProvider
 
         //
         //$this->loadMigrationsFrom(__DIR__ . '/../../src/database/migrations');
-        //$this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         //dd(__DIR__ . '/../database/migrations');
         //$this->loadMigrationsFrom(__DIR__ . '/../database/migrations');        

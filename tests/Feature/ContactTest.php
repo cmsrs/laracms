@@ -30,6 +30,8 @@ class ContactTest extends Base
 
     protected function tearDown(): void
     {
+        $this->deleteUser();
+        //$this->deleteAllTables();
         parent::tearDown();
         $this->content1 = null;
         $this->content2 = null;
