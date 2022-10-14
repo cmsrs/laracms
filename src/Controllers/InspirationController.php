@@ -9,7 +9,7 @@ class InspirationController
     public function __invoke(Inspire $inspire) {
         $quote = $inspire->justDoIt();
 
-        die( $quote  );
+        //die( $quote  );
         return view('laracms::index', compact('quote'));
     }
 

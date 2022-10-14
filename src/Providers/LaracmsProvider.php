@@ -18,8 +18,6 @@ class LaracmsProvider extends ServiceProvider
     public function boot()
     {
         //$router = $this->app->make(Router::class);
-
-
         //dd($router);
         //dd(\Tymon\JWTAuth\Http\Middleware\Authenticate::class);
         //$router->aliasMiddleware('tymon.jwt.auth', Authenticate::class);
@@ -41,7 +39,7 @@ class LaracmsProvider extends ServiceProvider
 
         //die('dziala');
         //$this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        //$this->loadViewsFrom(__DIR__.'/../views', 'laracms');
+        $this->loadViewsFrom(__DIR__.'/../views', 'laracms');
     }
 
     public function register()

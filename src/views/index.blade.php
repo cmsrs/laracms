@@ -1,17 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('laracms::layouts.index')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inspire</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+@if( $page->translatesByColumnAndLang( 'content', $lang ) )
+  @if( $is_new_orders )
+    <script>
+      //alert('new order');
+      localStorage.clear();
+    </script>
 
-<body>
     <div class="container">
-        <h1>quote</h1>
+      <div class="alert alert-success text-center" role="alert">
+      {{ __('Thank you for purchasing products in our store.') }}
+
+      @if (Auth::check())
+      <br>
+        <?php $pHome = App\Page::getFirstPageByType('home');  ?>
+        {{ __('Your:') }} <a class="nav-link" href="{{ $pHome->getUrl($lang) }}">{{ __('Orders') }}</a>
+      @endif
+      </div>
     </div>
-</body>
-</html>
+  @endif  
+  {!! $page->translatesByColumnAndLang( 'content', $lang ) !!}
+@endif
+
+
+
+@stop

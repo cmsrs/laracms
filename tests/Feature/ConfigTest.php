@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\Page;
-use App\Menu;
-use App\Config;
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\Config;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -22,14 +22,22 @@ class ConfigTest extends Base
         $this->createUser();
     }
 
+    protected function tearDown(): void
+    {
+        $this->deleteUser();
+        parent::tearDown();
+    }
+
+
     /** @test */
     public function it_will_get_config_docs()
     {
         $response = $this->get('api/config?token='.$this->token);
+        //dd($response);
 
         $res = $response->getData();
 
-        //dd($res);
+
 
 
         $this->assertTrue($res->success);
@@ -59,7 +67,6 @@ class ConfigTest extends Base
             $in = true;
 
             $url = $p->getUrl('en');
-            //dump($url);
             $response = $this->get($url);
 
             $status = ( ('login' === $page_type) ||  ('register' === $page_type ) ||  ('forgot' === $page_type )  ) ? 302 : 200; //I don't understand - todo (why register and forgot??)
@@ -67,7 +74,6 @@ class ConfigTest extends Base
                 $status = 404;
             }
 
-            //dump($page_type);
             $response->assertStatus($status);
         }
         $this->assertTrue($in);

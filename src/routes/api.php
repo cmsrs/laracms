@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Cmsrs\Laracms\Controllers\AuthController;
 use Cmsrs\Laracms\Controllers\ContactController;
+use Cmsrs\Laracms\Controllers\ConfigController;
+
 
 use Illuminate\Support\Facades\Route;
 //use Tymon\JWTAuth\Http\Middleware\Authenticate;
@@ -23,6 +25,11 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     $apiSecret = '';
     Route::get( '/api/'.$apiSecret.'contacts', [ContactController::class, 'index']);  
     Route::delete( '/api/'.$apiSecret.'contacts/{id}', [ContactController::class, 'delete']);  
+
+    Route::get('/api/'.$apiSecret.'config', [ConfigController::class, 'index']);
+    Route::get('/api/'.$apiSecret.'config/clearcache', [ConfigController::class, 'clearCache']);
+    Route::get('/api/'.$apiSecret.'config/createsitemap', [ConfigController::class, 'createSiteMap']);                
+
 });
 
 

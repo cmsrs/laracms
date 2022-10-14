@@ -75,6 +75,10 @@ class Base extends  \Orchestra\Testbench\TestCase
             ]
         );
 
+        $app['config']->set(
+            'app.key', 'base64:JjrFWC+TGnySY2LsldPXAxuHpyjh8UuoPMt6yy2gJ8U='
+        );
+
 
     }
 
@@ -163,7 +167,10 @@ class Base extends  \Orchestra\Testbench\TestCase
     {
         return [
             'Cmsrs\Laracms\Providers\LaracmsProvider',
-            'PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider'
+            'PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider',
+            //'Illuminate\Support\Facades\Auth',
+            'Illuminate\Auth\AuthServiceProvider'
+            
         ];
     }           
 
