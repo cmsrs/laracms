@@ -22,7 +22,7 @@ class Translate extends Base
 
     public function page()
     {
-        return $this->hasOne('App\Page', 'id', 'page_id');
+        return $this->hasOne(Page::class, 'id', 'page_id');
     }
     
 

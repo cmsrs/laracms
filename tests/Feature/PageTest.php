@@ -1,9 +1,10 @@
 <?php
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\Page;
-use App\Menu;
-use App\User;
+
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
@@ -58,6 +59,7 @@ class PageTest extends Base
 
     protected function tearDown(): void
     {
+        $this->deleteUser();        
         parent::tearDown();
     }
     

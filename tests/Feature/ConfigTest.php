@@ -122,6 +122,7 @@ class ConfigTest extends Base
     public function it_will_create_sitemap()    
     {
         $response = $this->get('api/config/createsitemap?token='.$this->token);
+        //dd($response);
         $res = $response->getData();
         $this->assertTrue($res->success);        
     }

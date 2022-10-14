@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Cmsrs\Laracms\Controllers\AuthController;
 use Cmsrs\Laracms\Controllers\ContactController;
 use Cmsrs\Laracms\Controllers\ConfigController;
+use Cmsrs\Laracms\Controllers\PageController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,16 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('/api/'.$apiSecret.'config', [ConfigController::class, 'index']);
     Route::get('/api/'.$apiSecret.'config/clearcache', [ConfigController::class, 'clearCache']);
     Route::get('/api/'.$apiSecret.'config/createsitemap', [ConfigController::class, 'createSiteMap']);                
+
+    Route::get('/api/'.$apiSecret.'pages', [PageController::class, 'index']);
+    Route::get('/api/'.$apiSecret.'pages/{id}', [PageController::class,  'oneItemAdmin']);        
+    Route::post('/api/'.$apiSecret.'pages', [PageController::class, 'create']);
+    Route::put('/api/'.$apiSecret.'pages/{id}', [PageController::class,  'update']);
+    Route::delete('/api/'.$apiSecret.'pages/{id}', [PageController::class,  'delete']);
+    Route::get('/api/'.$apiSecret.'pages/position/{direction}/{id}', [PageController::class, 'position']);
+    Route::get('/api/'.$apiSecret.'pages/type/{type}', [PageController::class,  'getPagesByType']);
+
+
 
 });
 
