@@ -6,6 +6,7 @@ use Cmsrs\Laracms\Controllers\ContactController;
 use Cmsrs\Laracms\Controllers\ConfigController;
 use Cmsrs\Laracms\Controllers\PageController;
 use Cmsrs\Laracms\Controllers\MenuController;
+use Cmsrs\Laracms\Controllers\CommentController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,10 @@ Route::post('/api/login',  [AuthController::class, 'login'] )
 ;
 
 Route::post('/api/contact/{lang}', [ContactController::class, 'create']); 
+
+Route::get('/api/comments/{pageId}', [CommentController::class,  'index']);
+Route::post('/api/comments/{pageId}', [CommentController::class,  'create']);
+
 
 
 Route::group(['middleware' => ['jwt.auth']], function() {

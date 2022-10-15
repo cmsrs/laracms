@@ -1,8 +1,8 @@
 <?php
 namespace Cmsrs\Laracms\Tests\Feature;
 
-use Cmsrs\Laracms\App\Page;
-use Cmsrs\Laracms\App\Menu;
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Menu;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -70,6 +70,7 @@ class CommentTest extends Base
 
     protected function tearDown(): void
     {
+        $this->deleteUser();        
         parent::tearDown();
     }
 

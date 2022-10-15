@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
 use App\Page;
 use App\Menu;
@@ -33,6 +33,7 @@ class ContentTest extends Base
 
     protected function tearDown(): void
     {
+        $this->deleteUser();
         parent::tearDown();
     }
 
