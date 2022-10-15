@@ -5,6 +5,7 @@ use Cmsrs\Laracms\Controllers\AuthController;
 use Cmsrs\Laracms\Controllers\ContactController;
 use Cmsrs\Laracms\Controllers\ConfigController;
 use Cmsrs\Laracms\Controllers\PageController;
+use Cmsrs\Laracms\Controllers\MenuController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,14 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('/api/'.$apiSecret.'pages/position/{direction}/{id}', [PageController::class, 'position']);
     Route::get('/api/'.$apiSecret.'pages/type/{type}', [PageController::class,  'getPagesByType']);
 
+
+    Route::get('/api/'.$apiSecret.'menus', [MenuController::class,  'index']);
+    Route::post('/api/'.$apiSecret.'menus', [MenuController::class,    'create']);
+    Route::put('/api/'.$apiSecret.'menus/{id}', [MenuController::class,   'update']);
+    Route::delete('/api/'.$apiSecret.'menus/{id}', [MenuController::class,   'delete']);
+    Route::get('/api/'.$apiSecret.'menus/position/{direction}/{id}', [MenuController::class,  'position']);
+
+    Route::get('/api/'.$apiSecret.'logout', [AuthController::class,  'logout']);
 
 
 });

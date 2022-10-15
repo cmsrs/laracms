@@ -1,16 +1,84 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\User;
+use Cmsrs\Laracms\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+//use Tests\TestCase;
 
-class AuthenticationTest extends TestCase
+class AuthenticationTest extends  \Orchestra\Testbench\TestCase
 {
     use RefreshDatabase;
 
+    protected function getPackageProviders($app)
+    {
+        return [
+            'Cmsrs\Laracms\Providers\LaracmsProvider',
+            'PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider',
+            //'Illuminate\Support\Facades\Auth',
+            'Illuminate\Auth\AuthServiceProvider'
+            
+        ];
+    }           
+
+
+    protected function getEnvironmentSetUp($app): void
+    {
+
+
+        $app['config']->set('database.default', 'mysql');
+        $app['config']->set('database.connections.mysql', [
+            'driver'   => 'mysql',
+            'database' => 'cmsrs_testing_package',
+            'prefix'   => '',
+            'username' => 'rs',
+            'host' => '127.0.0.1',
+            'password' => 'secret102*'
+        ]);
+
+        $app['config']->set(
+            'jwt.secret', 'aaaapisdfsdfsdfsdfert43545364536546346544363453654sdfgsdfg'
+        );
+
+        $app['config']->set(
+            'auth.default.guard', 'api'
+        );
+
+        $app['config']->set(
+            'auth.guards.api', [
+                'driver' =>  'jwt', //'token',
+                'provider' => 'users',
+                //'hash' => false,    
+            ],
+            'auth.guards.web', [
+                'driver' =>  'session', //'token',
+                'provider' => 'users',
+                //'hash' => false,    
+            ],            
+        );       
+
+        /*
+        'providers' => [
+            'users' => [
+                'driver' => 'eloquent',
+                'model' => App\User::class,
+            ],
+        */    
+
+        $app['config']->set(
+            'auth.providers.users', [
+                'driver' => 'eloquent',
+                'model' => User::class
+            ]
+        );
+
+        $app['config']->set(
+            'app.key', 'base64:JjrFWC+TGnySY2LsldPXAxuHpyjh8UuoPMt6yy2gJ8U='
+        );
+
+
+    }
 
 
     public function setUp(): void
@@ -94,6 +162,7 @@ class AuthenticationTest extends TestCase
         $this->assertTrue($response->success);
 
         $privilege =   $this->privilege_action($response->data->token);
+
         $this->assertTrue($privilege->getData()->success);
 
         $logout =   $this->logout_action($response->data->token);
