@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\Contact;
+use Cmsrs\Laracms\Models\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use Tests\TestCase;
 
-class ContactGuestTest extends TestCase
+class ContactGuestTest extends BaseClean
 {
     use RefreshDatabase;
 

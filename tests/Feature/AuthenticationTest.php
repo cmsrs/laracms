@@ -7,10 +7,12 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 //use Tests\TestCase;
 
-class AuthenticationTest extends  \Orchestra\Testbench\TestCase
+//class AuthenticationTest extends  \Orchestra\Testbench\TestCase
+class AuthenticationTest extends  BaseClean
 {
     use RefreshDatabase;
 
+    /*
     protected function getPackageProviders($app)
     {
         return [
@@ -58,13 +60,6 @@ class AuthenticationTest extends  \Orchestra\Testbench\TestCase
             ],            
         );       
 
-        /*
-        'providers' => [
-            'users' => [
-                'driver' => 'eloquent',
-                'model' => App\User::class,
-            ],
-        */    
 
         $app['config']->set(
             'auth.providers.users', [
@@ -79,7 +74,7 @@ class AuthenticationTest extends  \Orchestra\Testbench\TestCase
 
 
     }
-
+    */
 
     public function setUp(): void
     {

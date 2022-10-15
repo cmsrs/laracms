@@ -23,7 +23,7 @@ Route::post('/api/login',  [AuthController::class, 'login'] )
 
 Route::post('/api/contact/{lang}', [ContactController::class, 'create']); 
 
-Route::get('/api/comments/{pageId}', [CommentController::class,  'index']);
+Route::get('/api/comments/{pageId}', [CommentController::class, 'index']);
 Route::post('/api/comments/{pageId}', [CommentController::class,  'create']);
 
 
