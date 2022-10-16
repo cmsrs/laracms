@@ -21,6 +21,9 @@ class ContactGuestTest extends BaseClean
     /** @test */
     public function it_will_create_contact_docs()
     {
+        config()->set('cmsrs.langs', 'en,pl');
+        //$value = config('cmsrs');
+
         $content = array(
             'email' => 'test@example.com',
             'message' => 'test message - test123'

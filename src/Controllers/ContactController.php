@@ -25,7 +25,7 @@ class ContactController extends Controller
         if (!in_array($lang, $langs)) {
             abort(404);
         }
-        App::setLocale($lang);
+        App::setLocale($lang); //for package not working: ./vendor/bin/phpunit --filter  it_will_create_contact_docs     ./tests/Feature/ContactGuestTest.php
 
         $token = $request->get('token');
 

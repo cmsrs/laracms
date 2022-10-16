@@ -45,7 +45,9 @@ class LaracmsProvider extends ServiceProvider
     public function register()
     {
         //dd(__DIR__.'/../routes/api.php');
-        //$this->loadRoutesFrom(__DIR__.'/../routes/api.php');        
+        //$this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        //dd('_____dd___'.__DIR__.'/../../config/config.php');
+        $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'cmsrs');
     }
 
 }
