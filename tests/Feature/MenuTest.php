@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\Menu;
-use App\Page;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\Page;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
