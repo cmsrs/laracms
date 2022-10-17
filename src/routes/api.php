@@ -32,7 +32,11 @@ Route::get('/api/page/{id}/{lang}', [PageController::class,  'oneItem']);
 
 
 Route::group(['middleware' => ['jwt.auth']], function() {
-    $apiSecret = '';
+    $apiSecret = env('API_SECRET', '' );
+    if($apiSecret){
+        $apiSecret = $apiSecret.'/';
+    }            
+    
     Route::get( '/api/'.$apiSecret.'contacts', [ContactController::class, 'index']);  
     Route::delete( '/api/'.$apiSecret.'contacts/{id}', [ContactController::class, 'delete']);  
 
