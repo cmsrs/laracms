@@ -1,14 +1,14 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-use App\Page;
-use App\Menu;
-use App\Config;
-use App\Data\Demo;
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\Config;
+use Cmsrs\Laracms\Models\Data\Demo;
 use Illuminate\Support\Str;
 
 class FrontLangsTest extends Base
@@ -43,6 +43,7 @@ class FrontLangsTest extends Base
 
     protected function tearDown(): void
     {
+        $this->deleteUser();
         parent::tearDown();
     }
 

@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers;
+namespace Cmsrs\Laracms\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Product;
-use App\Image;
-use App\Config;
+use Cmsrs\Laracms\Models\Product;
+use Cmsrs\Laracms\Models\Image;
+use Cmsrs\Laracms\Models\Config;
 use Validator;
 use Illuminate\Support\Facades\Log;
 

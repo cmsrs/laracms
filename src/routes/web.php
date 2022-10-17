@@ -58,20 +58,23 @@ $langs = Config::arrGetLangsEnv();
 
 //Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/home', 'HomeController@index')->name('home');
+    //Route::get('/home', 'HomeController@index')->name('home');
+
+
     //Route::get('/home/basket', 'HomeController@basket')->name('basket');
     //Route::get('/home/orders', 'HomeController@orders')->name('orders');
 
     //depreciate - /home/api/tobank!
     //Route::post('/home/api/tobank', 'HomeController@tobank')->name('tobank');
-    Route::post('/post/checkout', 'FrontController@postCheckout');
+    Route::post('/post/checkout', [FrontController::class, 'postCheckout']);
 
-    Route::get('/changelang/{lang}/{pageId}/{productSlug?}', 'FrontController@changeLang')->name('changelang');
+    Route::get('/changelang/{lang}/{pageId}/{productSlug?}', [FrontController::class,  'changeLang'])->name('changelang');
 //});
 
 
 
     Route::get('/',  [FrontController::class,  'index']);
+    Route::post('/logout', [LoginController::class,   'logout'])->name('logout');    
     if( empty($langs)  || (1 == count($langs)) ){    
         
         
@@ -90,23 +93,34 @@ $langs = Config::arrGetLangsEnv();
         Route::get('/register', [RegisterController::class,  'showRegistrationForm'])->name('register');            
         Route::get('/forgot', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('forgot');
 
-        Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
         Route::get('/'.Page::PREFIX_CMS_ONE_PAGE_IN_MENU_URL.'/{menuSlug}', [FrontController::class, 'getPage']);
         Route::get('/'.Page::PREFIX_CMS_URL.'/{menuSlug}/{pageSlug}/{productSlug?}', [FrontController::class,  'getPage']);
         Route::get('/'.Page::PREFIX_IN_URL.'/{pageSlug}', [FrontController::class,  'getSeparatePage']);    
     }else{
-        Route::get('/{lang}/shoppingsuccess', 'FrontController@shoppingsuccess');
-        Route::get('/{lang}/search', 'FrontController@search');
-        Route::get('/{lang}/checkout', 'FrontController@checkout');
-        Route::get('/{lang}/home', 'HomeController@index');        
-        Route::get('/{lang}', 'FrontController@index');
-        Route::get('/{lang}/login', 'Auth\LoginController@showLoginForm'); //->name('login');    
-        Route::get('/{lang}/register', 'Auth\RegisterController@showRegistrationForm'); // ->name('register');                    
-        Route::get('/{lang}/forgot', 'Auth\ForgotPasswordController@showLinkRequestForm');
 
-        Route::get('/{lang}/'.Page::PREFIX_CMS_ONE_PAGE_IN_MENU_URL.'/{menuSlug}', 'FrontController@getPageLangs');        
-        Route::get('/{lang}/'.Page::PREFIX_CMS_URL.'/{menuSlug}/{pageSlug}/{productSlug?}', 'FrontController@getPageLangs');
-        Route::get('/{lang}/'.Page::PREFIX_IN_URL.'/{pageSlug}', 'FrontController@getSeparatePageLangs');
+        //die('___________ssss_______');
+        //Route::post('/logout', [LoginController::class,   'logout'])->name('logout');        
+
+
+        Route::get('/{lang}/search', [FrontController::class,  'search']);
+
+
+        Route::group(['middleware' => ['web']], function () {        
+            Route::get('/{lang}/shoppingsuccess', [FrontController::class,  'shoppingsuccess']);            
+            Route::get('/{lang}/checkout', [FrontController::class,  'checkout']);
+        });
+
+
+        Route::get('/{lang}/home', [HomeController::class,  'index']);        
+        Route::get('/{lang}', [FrontController::class,  'index']);
+        Route::get('/{lang}/login', [LoginController::class,  'showLoginForm']); //->name('login');    
+        Route::get('/{lang}/register', [RegisterController::class,  'showRegistrationForm']); // ->name('register');                    
+        Route::get('/{lang}/forgot', [ForgotPasswordController::class, 'showLinkRequestForm']);
+
+        Route::get('/{lang}/'.Page::PREFIX_CMS_ONE_PAGE_IN_MENU_URL.'/{menuSlug}', [FrontController::class, 'getPageLangs']);        
+        Route::get('/{lang}/'.Page::PREFIX_CMS_URL.'/{menuSlug}/{pageSlug}/{productSlug?}', [FrontController::class, 'getPageLangs']);
+        Route::get('/{lang}/'.Page::PREFIX_IN_URL.'/{pageSlug}', [FrontController::class,  'getSeparatePageLangs']);
     }
 
 

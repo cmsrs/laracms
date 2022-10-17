@@ -7,6 +7,7 @@ use Cmsrs\Laracms\Controllers\ConfigController;
 use Cmsrs\Laracms\Controllers\PageController;
 use Cmsrs\Laracms\Controllers\MenuController;
 use Cmsrs\Laracms\Controllers\CommentController;
+use Cmsrs\Laracms\Controllers\ProductController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,11 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('/api/'.$apiSecret.'menus/position/{direction}/{id}', [MenuController::class,  'position']);
 
     Route::get('/api/'.$apiSecret.'logout', [AuthController::class,  'logout']);
+
+    Route::get('/api/'.$apiSecret.'products', [ProductController::class,  'index']);
+    Route::post('/api/'.$apiSecret.'products', [ProductController::class,  'create']);
+    Route::put('/api/'.$apiSecret.'products/{id}', [ProductController::class,  'update']);
+    Route::delete('/api/'.$apiSecret.'products/{id}', [ProductController::class,  'delete']);
 
 
 });
