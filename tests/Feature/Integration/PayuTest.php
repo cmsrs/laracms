@@ -1,9 +1,10 @@
 <?php
 
-namespace Tests\Feature\Integration;
+namespace Cmsrs\Laracms\Tests\Feature\Integration;
+//namespace Tests\Feature\Integration;
 
-use Tests\Feature\Base;
-use App\Integration\Payu;
+use Cmsrs\Laracms\Tests\Feature\Base;
+use Cmsrs\Laracms\Models\Integration\Payu;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
@@ -16,12 +17,14 @@ class PayuTest extends  Base //TestCase
 
     public function setUp(): void
     {
+        putenv('LANGS="en"');
         parent::setUp();
         $this->payu = new Payu;
     }
 
     protected function tearDown(): void
     {
+        $this->deleteUser();
         parent::tearDown();
     }
 
