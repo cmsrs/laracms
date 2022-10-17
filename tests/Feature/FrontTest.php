@@ -38,6 +38,7 @@ class FrontTest extends Base
 
     protected function tearDown(): void
     {
+        $this->deleteUser();
         parent::tearDown();
     }
 
