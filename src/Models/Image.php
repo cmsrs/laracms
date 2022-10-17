@@ -3,6 +3,8 @@
 namespace Cmsrs\Laracms\Models;
 
 use Carbon\Carbon;
+use Intervention\Image\Facades\Image as LibImage;
+
 
 class Image extends Base
 {
@@ -238,14 +240,14 @@ class Image extends Base
             if (!file_exists($dirImg)) {
                 mkdir($dirImg, 0777, true);
             }
-            \LibImage::make($data)->save($dirImg.'/'.$name);
+            LibImage::make($data)->save($dirImg.'/'.$name);
 
             $fileName = pathinfo($name, PATHINFO_FILENAME);
             $fileExt = pathinfo($name, PATHINFO_EXTENSION);
 
             foreach (self::$thumbs as $thumbName => $dimension) {
                 $fileThumb = $dirImg.'/'.$fileName.'-'.$thumbName.'.'.$fileExt;
-                \LibImage::make($data)->resize($dimension['x'], $dimension['y'])->save($fileThumb);
+                LibImage::make($data)->resize($dimension['x'], $dimension['y'])->save($fileThumb);
             }
         }
         return $out;

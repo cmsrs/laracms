@@ -169,7 +169,8 @@ class Base extends  \Orchestra\Testbench\TestCase
             'Cmsrs\Laracms\Providers\LaracmsProvider',
             'PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider',
             //'Illuminate\Support\Facades\Auth',
-            'Illuminate\Auth\AuthServiceProvider'
+            'Illuminate\Auth\AuthServiceProvider',
+            'Intervention\Image\ImageServiceProvider'
             
         ];
     }           

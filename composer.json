@@ -37,7 +37,8 @@
     "require": {
         "guzzlehttp/guzzle": "^7.0.1",
         "php-open-source-saver/jwt-auth": "^2.0",
-        "laravel/ui": "^4.0"
+        "laravel/ui": "^4.0",
+        "intervention/image": "^2.7"
     },
     "require-dev": {
         "orchestra/testbench": "^7.6",
