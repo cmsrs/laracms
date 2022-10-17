@@ -1,15 +1,14 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
-use App\Page;
-use App\Menu;
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Menu;
 use Illuminate\Support\Str;
 
-class FrontGuestTest extends TestCase
+class FrontGuestTest extends BaseClean
+//class FrontGuestTest extends Base
 {
     public function setUp(): void
     {
@@ -43,7 +42,7 @@ class FrontGuestTest extends TestCase
         $this->assertNotEmpty($pageTitle);
         $this->assertNotEmpty($pageShortTitle);
 
-        $urlLogin = $page->getUrl($lang);
+        $urlLogin = $page->getUrl($lang);        
         $response = $this->get($urlLogin);
         $response->assertStatus(200);
         

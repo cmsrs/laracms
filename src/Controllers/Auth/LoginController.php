@@ -79,7 +79,7 @@ class LoginController extends Controller
             'menus' => $this->menus
         ]);
         
-        return view('auth.login', $data);
+        return view('laracms::auth.login', $data);
     }
 
 }

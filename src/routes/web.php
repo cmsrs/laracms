@@ -81,11 +81,12 @@ $langs = Config::arrGetLangsEnv();
             Route::get('/shoppingsuccess',  [FrontController::class, 'shoppingsuccess']);        
             Route::get('/checkout',  [FrontController::class,  'checkout'] )->name('checkout');
             Route::get('/search',  [FrontController::class, 'search']);                
+            Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');    
         });
 
 
         Route::get('/home', [HomeController::class, 'index' ])->name('home');
-        Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');    
+        
         Route::get('/register', [RegisterController::class,  'showRegistrationForm'])->name('register');            
         Route::get('/forgot', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('forgot');
 

@@ -1,4 +1,4 @@
-@extends('laracms::laracms::layouts.default')
+@extends('laracms::layouts.default')
 
 
 @section('content')
