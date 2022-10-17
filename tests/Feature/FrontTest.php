@@ -1,14 +1,16 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use Tests\TestCase;
+
+
+//use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-use App\Page;
-use App\Config;
-use App\Menu;
-use App\Data\Demo;
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Config;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\Data\Demo;
 use Illuminate\Support\Str;
 
 class FrontTest extends Base
