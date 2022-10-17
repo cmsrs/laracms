@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\Page;
-use App\Menu;
-use App\Image;
-use App\Translate;
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\Image;
+use Cmsrs\Laracms\Models\Translate;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -82,6 +82,7 @@ class ImageTest extends Base
                 $this->clear_imgs();
             }
         }
+        $this->deleteUser();        
         parent::tearDown();
     }
 
@@ -115,11 +116,11 @@ class ImageTest extends Base
     public function it_will_get_page_with_images_docs()
     {
         $response0 = $this->get('api/page/'.$this->pageId.'/fr');  //this method doesnt cointain ticket - ti is avaliable as guest
-
-        $this->assertFalse($response0->getData()->success);
+        //$response0->assertStatus(404);
+        $this->assertFalse($response0->getData()->success); //it is working - i dont know why.
       
         $response3 = $this->get('api/page/'.$this->pageId.'/en');
-
+        //dd($response3);
         $res3 = $response3->getData();
         $this->assertTrue($res3->success);
 

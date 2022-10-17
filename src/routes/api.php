@@ -8,6 +8,7 @@ use Cmsrs\Laracms\Controllers\PageController;
 use Cmsrs\Laracms\Controllers\MenuController;
 use Cmsrs\Laracms\Controllers\CommentController;
 use Cmsrs\Laracms\Controllers\ProductController;
+use Cmsrs\Laracms\Controllers\ImageController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::post('/api/contact/{lang}', [ContactController::class, 'create']);
 Route::get('/api/comments/{pageId}', [CommentController::class, 'index']);
 Route::post('/api/comments/{pageId}', [CommentController::class,  'create']);
 
+Route::get('/api/page/{id}/{lang}', [PageController::class,  'oneItem']);
 
 
 Route::group(['middleware' => ['jwt.auth']], function() {
@@ -37,6 +39,7 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('/api/'.$apiSecret.'config', [ConfigController::class, 'index']);
     Route::get('/api/'.$apiSecret.'config/clearcache', [ConfigController::class, 'clearCache']);
     Route::get('/api/'.$apiSecret.'config/createsitemap', [ConfigController::class, 'createSiteMap']);                
+
 
     Route::get('/api/'.$apiSecret.'pages', [PageController::class, 'index']);
     Route::get('/api/'.$apiSecret.'pages/{id}', [PageController::class,  'oneItemAdmin']);        
@@ -59,6 +62,12 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::post('/api/'.$apiSecret.'products', [ProductController::class,  'create']);
     Route::put('/api/'.$apiSecret.'products/{id}', [ProductController::class,  'update']);
     Route::delete('/api/'.$apiSecret.'products/{id}', [ProductController::class,  'delete']);
+
+
+    Route::get('/api/'.$apiSecret.'images/{type}/{pageId}', [ImageController::class,   'getItemByTypeAndRefId']); //getItemByPageId
+    Route::delete('/api/'.$apiSecret.'images/{id}',  [ImageController::class, 'delete']);
+    Route::get('/api/'.$apiSecret.'images/position/{direction}/{id}', [ImageController::class,  'position']); //only for type page is working
+
 
 
 });
