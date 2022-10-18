@@ -40,6 +40,21 @@ class LaracmsProvider extends ServiceProvider
         //die('dziala');
         //$this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         $this->loadViewsFrom(__DIR__.'/../views', 'laracms');
+
+
+        $this->publishes([
+            __DIR__.'/../public' => public_path('.'),
+        ], 'public');
+
+        /*
+        $this->publishes([
+            __DIR__.'/../database/seeds/' => database_path('seeds')
+        ], 'seeds');        
+
+        $this->publishes([
+            __DIR__.'/../database/migrations/' => database_path('migrations')
+        ], 'migrations');        
+        */
     }
 
     public function register()

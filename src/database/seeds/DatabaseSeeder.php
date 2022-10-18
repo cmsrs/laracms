@@ -1,5 +1,8 @@
 <?php
 
+namespace Cmsrs\Laracms\Database\Seeds;
+
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
