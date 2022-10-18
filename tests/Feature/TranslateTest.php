@@ -1,12 +1,13 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\Page;
-use App\Menu;
-use App\Image;
-use App\Translate;
-use App\Content;
+
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\Image;
+use Cmsrs\Laracms\Models\Translate;
+use Cmsrs\Laracms\Models\Content;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
