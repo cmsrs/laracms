@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Cmsrs\Laracms\Controllers;
 
 use Illuminate\Http\Request;
-use App\Config;
-use App\Checkout;
-use App\Order;
+use Cmsrs\Laracms\Models\Config;
+use Cmsrs\Laracms\Models\Checkout;
+use Cmsrs\Laracms\Models\Order;
 use Illuminate\Support\Facades\Log;
 use Validator;
 

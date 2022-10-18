@@ -1,20 +1,21 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-//use App\Base;
-use App\Page;
-use App\Deliver;
-use App\Payment;
-use App\Checkout;
-use App\Basket;
-use App\Order;
-use App\User;
-use App\Menu;
-use App\Image;
-use App\Product;
-use App\Translate;
-use App\Content;
+
+use Cmsrs\Laracms\Models\Page;
+use Cmsrs\Laracms\Models\Deliver;
+use Cmsrs\Laracms\Models\Payment;
+use Cmsrs\Laracms\Models\Checkout;
+use Cmsrs\Laracms\Models\Basket;
+use Cmsrs\Laracms\Models\Order;
+use Cmsrs\Laracms\Models\User;
+use Cmsrs\Laracms\Models\Menu;
+use Cmsrs\Laracms\Models\Image;
+use Cmsrs\Laracms\Models\Product;
+use Cmsrs\Laracms\Models\Translate;
+use Cmsrs\Laracms\Models\Content;
+use Cmsrs\Laracms\Models\Base as ModelsBase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
@@ -62,7 +63,9 @@ class ProductTest extends Base
 
     protected function tearDown(): void
     {
+
         parent::tearDown();
+        //$this->deleteUser();         
     }
 
     private function setTestData()
@@ -285,7 +288,6 @@ class ProductTest extends Base
         $this->assertNotEmpty($p2->id);        
 
         $response0 = $this->post('/post/checkout', $data);
-        //dd($response0);
         $response0->assertStatus(302);  
 
         $c1 = Checkout::all()->count();
@@ -983,7 +985,7 @@ class ProductTest extends Base
         $obj = json_decode($json);
         $this->assertEquals(2, count($obj->cart));
 
-        $arrCart = \App\Base::reIndexArr($obj->cart);        
+        $arrCart = ModelsBase::reIndexArr($obj->cart);        
 
         //dd($arrCart);
         //dd('________ffff_____');        

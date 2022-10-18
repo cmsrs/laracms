@@ -30,7 +30,7 @@ class Checkout extends Model
 
     public function baskets()
     {
-        return $this->hasMany('App\Basket');
+        return $this->hasMany(Basket::class);
     } 
     
 

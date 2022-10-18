@@ -9,7 +9,7 @@ use Cmsrs\Laracms\Controllers\MenuController;
 use Cmsrs\Laracms\Controllers\CommentController;
 use Cmsrs\Laracms\Controllers\ProductController;
 use Cmsrs\Laracms\Controllers\ImageController;
-
+use Cmsrs\Laracms\Controllers\CheckoutController;
 
 use Illuminate\Support\Facades\Route;
 //use Tymon\JWTAuth\Http\Middleware\Authenticate;
@@ -30,13 +30,14 @@ Route::post('/api/comments/{pageId}', [CommentController::class,  'create']);
 
 Route::get('/api/page/{id}/{lang}', [PageController::class,  'oneItem']);
 
+Route::get('/api/productsGetNameAndPrice/{lang?}', [ProductController::class, 'getNameAndPrice']);
 
 Route::group(['middleware' => ['jwt.auth']], function() {
     $apiSecret = env('API_SECRET', '' );
     if($apiSecret){
         $apiSecret = $apiSecret.'/';
     }            
-    
+
     Route::get( '/api/'.$apiSecret.'contacts', [ContactController::class, 'index']);  
     Route::delete( '/api/'.$apiSecret.'contacts/{id}', [ContactController::class, 'delete']);  
 
@@ -72,6 +73,8 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::delete('/api/'.$apiSecret.'images/{id}',  [ImageController::class, 'delete']);
     Route::get('/api/'.$apiSecret.'images/position/{direction}/{id}', [ImageController::class,  'position']); //only for type page is working
 
+    Route::get('/api/'.$apiSecret.'checkouts', [CheckoutController::class,   'index']);        
+    Route::put('/api/'.$apiSecret.'checkouts/{id}', [CheckoutController::class,  'update']);        
 
 
 });

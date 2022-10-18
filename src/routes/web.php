@@ -66,7 +66,9 @@ $langs = Config::arrGetLangsEnv();
 
     //depreciate - /home/api/tobank!
     //Route::post('/home/api/tobank', 'HomeController@tobank')->name('tobank');
-    Route::post('/post/checkout', [FrontController::class, 'postCheckout']);
+    Route::group(['middleware' => ['web']], function () {        
+        Route::post('/post/checkout', [FrontController::class, 'postCheckout']);
+    });
 
     Route::get('/changelang/{lang}/{pageId}/{productSlug?}', [FrontController::class,  'changeLang'])->name('changelang');
 //});
