@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Cmsrs\Laracms\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use Cmsrs\Laracms\Models\User;
+
 
 class UserController extends Controller
 {

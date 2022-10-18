@@ -1,8 +1,9 @@
 <?php
 
-namespace Tests\Feature;
+namespace Cmsrs\Laracms\Tests\Feature;
 
-use App\User;
+
+use Cmsrs\Laracms\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserTest extends Base
@@ -14,7 +15,10 @@ class UserTest extends Base
         putenv('LANGS="en"');
         putenv('API_SECRET=""');
         parent::setUp();
+
+        $this->deleteUser();
         $this->createUser();
+        //$this->deleteUser();
 
         $this->testData =
             [
@@ -25,6 +29,13 @@ class UserTest extends Base
             ];
 
         $this->it_will_create_user_client();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->deleteUser();
+        parent::tearDown();
+        //$this->deleteUser();
     }
 
     private function it_will_create_user_client()
@@ -51,6 +62,7 @@ class UserTest extends Base
     public function it_will_get_all_user_clients_docs()
     {
         $response = $this->get('api/users/clients?token='.$this->token);
+        //dd($response);
         $res = $response->getData();
         $this->assertTrue($res->success);
         $this->assertEquals(count($res->data), 1);
@@ -62,8 +74,10 @@ class UserTest extends Base
         $this->assertNotEmpty($data['updated_at']);
     }
 
+    /*
     protected function tearDown(): void
     {
         parent::tearDown();
     }
+    */
 }

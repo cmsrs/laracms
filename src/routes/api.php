@@ -10,6 +10,7 @@ use Cmsrs\Laracms\Controllers\CommentController;
 use Cmsrs\Laracms\Controllers\ProductController;
 use Cmsrs\Laracms\Controllers\ImageController;
 use Cmsrs\Laracms\Controllers\CheckoutController;
+use Cmsrs\Laracms\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
 //use Tymon\JWTAuth\Http\Middleware\Authenticate;
@@ -76,6 +77,7 @@ Route::group(['middleware' => ['jwt.auth']], function() {
     Route::get('/api/'.$apiSecret.'checkouts', [CheckoutController::class,   'index']);        
     Route::put('/api/'.$apiSecret.'checkouts/{id}', [CheckoutController::class,  'update']);        
 
+    Route::get('/api/'.$apiSecret.'users/clients', [UserController::class,  'getClients']);
 
 });
 

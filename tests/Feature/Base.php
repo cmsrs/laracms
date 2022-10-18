@@ -123,7 +123,13 @@ class Base extends  \Orchestra\Testbench\TestCase
 
     public function deleteUser()
     {    
-        User::where('email', 'test@email.com')->delete();
+        $find = User::where('email', 'test@email.com')->first();
+        //dd($find);
+        if($find){
+            $find->delete();
+        }
+
+        //User::where('email', 'test@email.com')->delete();
     }
 
 
