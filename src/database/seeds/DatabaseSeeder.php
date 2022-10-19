@@ -1,7 +1,5 @@
 <?php
 
-namespace Cmsrs\Laracms\Database\Seeds;
-
 
 use Illuminate\Database\Seeder;
 
