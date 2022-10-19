@@ -24,9 +24,5 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make($admPass),
             'role' => 'admin'
         ]);
-
-
-
-
     }
 }

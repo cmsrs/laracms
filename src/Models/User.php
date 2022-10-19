@@ -157,4 +157,24 @@ class User extends Authenticatable implements JWTSubject
         return true;
     }
 
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function addAdmin()
+    {
+        // $this->call(UsersTableSeeder::class);
+        $admEmail = env('ADM_EMAIL', 'adm@cmsrs.pl');
+        $admPass = env('ADM_PASS', 'cmsrs123');
+
+        //DB::table('users')->insert([
+        $this->insert([            
+            'name' => 'adm',
+            'email' => $admEmail,
+            'password' => Hash::make($admPass),
+            'role' => 'admin'
+        ]);
+    }    
+
 }

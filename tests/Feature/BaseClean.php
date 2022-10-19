@@ -78,7 +78,16 @@ class BaseClean extends  \Orchestra\Testbench\TestCase
             'Illuminate\Auth\AuthServiceProvider'
             
         ];
-    }           
+    }  
+    
+    public function deleteUserAdm()
+    {    
+        $find = User::where('email', 'adm@cmsrs.pl')->first();
+        if($find){
+            $find->delete();
+        }
+    }
+    
 
 
     public function setUp(): void
@@ -89,6 +98,7 @@ class BaseClean extends  \Orchestra\Testbench\TestCase
 
     protected function tearDown(): void
     {
+        $this->deleteUserAdm();
         parent::tearDown();
     }
 

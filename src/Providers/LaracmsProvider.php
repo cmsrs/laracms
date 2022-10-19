@@ -6,7 +6,8 @@ namespace Cmsrs\Laracms\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
 use Tymon\JWTAuth\Http\Middleware\Authenticate;
-//use Tymon\JWTAuth\Middleware\GetUserFromToken;
+
+//use Cmsrs\Laracms\Models\User;
 
 class LaracmsProvider extends ServiceProvider
 {
@@ -45,6 +46,9 @@ class LaracmsProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../public' => public_path('.'),
         ], 'public');
+
+
+        //(new User)->addAdmin();
 
         /*
         $this->publishes([

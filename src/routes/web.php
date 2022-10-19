@@ -1,6 +1,5 @@
 <?php
 
-use Cmsrs\Laracms\Controllers\InspirationController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
@@ -11,15 +10,6 @@ use Cmsrs\Laracms\Controllers\HomeController;
 use Cmsrs\Laracms\Controllers\Auth\LoginController;
 use Cmsrs\Laracms\Controllers\Auth\RegisterController;
 use Cmsrs\Laracms\Controllers\Auth\ForgotPasswordController;
-
-
-Route::get('inspire', InspirationController::class);
-Route::get('trs', [InspirationController::class, 'trs'  ]);
-
-
-
-
-
 
 
 /*

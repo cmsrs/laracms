@@ -121,6 +121,15 @@ class Base extends  \Orchestra\Testbench\TestCase
     }
     */
 
+    public function deleteUserAdm()
+    {    
+        $find = User::where('email', 'adm@cmsrs.pl')->first();
+        if($find){
+            $find->delete();
+        }
+    }
+
+
     public function deleteUser()
     {    
         $find = User::where('email', 'test@email.com')->first();
@@ -200,6 +209,7 @@ class Base extends  \Orchestra\Testbench\TestCase
 
     protected function tearDown(): void
     {
+        $this->deleteUserAdm();
         parent::tearDown();
     }
 
