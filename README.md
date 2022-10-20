@@ -13,6 +13,7 @@ Configure jwtAuth (in nutshell):
 
 ```bash
 php artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
+
 php artisan jwt:secret
 ```
 
