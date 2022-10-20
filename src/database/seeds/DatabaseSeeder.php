@@ -22,5 +22,16 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make($admPass),
             'role' => 'admin'
         ]);
+
+        $emailClient = 'client@cmsrs.pl';
+        $passClient = 'cmsrs456';
+        DB::table('users')->insert([
+            'name'     => 'client',
+            'email'    => $emailClient,
+            'password' => Hash::make($passClient),
+            'role' => 'client'
+        ]);
+
+
     }
 }

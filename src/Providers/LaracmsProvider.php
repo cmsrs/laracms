@@ -34,8 +34,8 @@ class LaracmsProvider extends ServiceProvider
 
         
         $this->publishes([
-            __DIR__.'/../database/seeds/' => database_path('seeds')
-        ], 'seeds');        
+            __DIR__.'/../database/seeds/' => database_path('seeders')
+        ], 'seeders');        
 
         $this->publishes([
             __DIR__.'/../database/migrations/' => database_path('migrations')
