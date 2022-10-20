@@ -7,6 +7,16 @@ php artisan migrate
 
 php artisan db:seed
 ``` 
+
+
+Remove lines from file: ./routes/web.php:
+```php
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+```
+
+
  
 Configure jwtAuth (in nutshell):
 
@@ -166,6 +176,10 @@ class User extends Authenticatable implements JWTSubject
 
 }
 ```
+
+
+
+
 
 ```bash
 php artisan serve
