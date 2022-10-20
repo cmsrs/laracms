@@ -1,5 +1,6 @@
 ```bash
 composer require cmsrs/laracms
+
 php artisan vendor:publish --provider="Cmsrs\Laracms\Providers\LaracmsProvider" --force
 
 php artisan migrate
@@ -43,7 +44,7 @@ in config/auth.php change to:
     ],
 ```
 
-add file in: app/Models:
+add User.php file in: app/Models:
 
 ```php
 <?php
