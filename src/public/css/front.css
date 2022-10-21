@@ -1,0 +1,301 @@
+body {
+  padding-top: 5rem;
+  line-height: 1.8;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+
+.a-google-play img{
+  width: 210px;
+  height: 70px;
+}
+
+/**-- GALLERY --**/
+
+ /* Style the Image Used to Trigger the Modal */
+ .myImgs {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+ #myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 96%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 100px;
+  width: auto;
+  padding: 16px;
+  right: 1px;
+  color: #bbb !important;
+  font-size: 40px;
+  font-weight: bold;
+  /*transition: 0.3s;*/
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.close:hover,
+.close:focus {
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: #bbb !important;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.video-el{
+  width: 700px;
+  height: 600px;
+}
+
+/** basket - start **/
+#appbasket{
+  margin-top: 24px;
+  position : absolute;
+  /*min-width: 343px;*/
+  background-color: #c4d0d8;
+  z-index: 100001;
+  left: auto;
+}
+/** basket - stop **/
+
+/*
+nav.lead{
+    font-size: 1.1rem;
+    font-weight: 400;  
+}
+*/
+
+.nav-main-rs{
+    margin-left: 100px;
+}
+
+table.table  th{
+    font-weight: 400;
+}
+ 
+
+@media(max-width: 1250px) {
+  .nav-main-rs{
+    margin-left: 1px;
+  }
+ 
+  nav.lead{
+    font-size: 0.95rem;
+    font-weight: 400;  
+  }
+  #logo_cmsrs{
+    height: 20px;
+  }
+
+}
+
+
+@media(max-width: 1250px) {
+  main.pt-5 {
+    padding-top: 0.7rem !important;
+  }
+  main.pt-5 > div {
+    padding-top: 0.7rem !important;
+  }
+
+}
+
+@media(max-width: 960px) {
+  
+  .video-el{
+      width: 700px;
+      height: 600px;
+  }
+  video{
+      width: 630px;
+  }
+}
+
+@media(max-width: 800px) {
+
+/*
+  nav.lead{
+    font-size: 0.63rem;
+    font-weight: 400;  
+  }
+*/
+  #logo_cmsrs{
+    height: 20px;
+  }
+
+}
+
+
+@media(max-width: 730px) {
+   /*
+  #fixed-bottom{
+    display: none;
+    z-index: -1500 !important;
+  }
+    */
+
+  .dropdown-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-y: scroll !important;
+    /*z-index: 1600 !important;*/
+  }
+  .video-el{
+      width: 500px;
+      height: 400px;
+  }
+  video{
+      width: 500px;
+  }
+
+}
+
+@media(max-width: 600px) {
+  .dropdown-menu {
+
+    height: auto;
+    max-height: 200px;
+    overflow-y: scroll !important;
+    /*z-index: 1600 !important;*/
+  }
+
+    h1 {
+        font-size: 1.9rem   !important;
+    }
+
+  .video-el{
+      width: 250px;
+      height: 200px;
+  }
+  video{
+      width: 250px;
+  }
+}
+
+
+@media(max-width: 360px) {
+  .dropdown-menu {
+
+    height: auto;
+    max-height: 200px;
+    overflow-y: scroll !important;
+    /*z-index: 1600 !important;*/
+  }
+
+    h1 {
+        font-size: 1.8rem !important;
+    }
+
+
+  .video-el{
+      width: 250px;
+      height: 200px;
+  }
+  video{
+      width: 250px;
+  }
+}
+
+.img-screen {
+  width: 100%;
+  height: 100%;
+}
+
