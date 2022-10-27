@@ -1,3 +1,6 @@
+
+# INSTALLATION 
+
 ```bash
 composer require cmsrs/laracms
 
